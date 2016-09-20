@@ -18,3 +18,4 @@ print predictions
 accuracy = accuracy_score(predictions,labels_test)
 print accuracy
 #c = 1.0 -> 0.514361849391
+#c = 100.0 -> 0.518133997785

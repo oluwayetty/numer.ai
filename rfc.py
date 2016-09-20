@@ -7,14 +7,8 @@ from sklearn.metrics import accuracy_score, log_loss
 training_data = pd.read_csv('numerai_training_data.csv')
 tournament_data = pd.read_csv('numerai_tournament_data.csv')
 
-print training_data
-# splitting my arrays in ratioe of 30:70 percent
+# splitting my arrays in ratio of 30:70 percent
 features_train, features_test, labels_train, labels_test = cross_validation.train_test_split(training_data.iloc[:,0:21], training_data['target'], test_size=0.3, random_state=0)
-
-# len(features_train) = 67424
-# len(features_test) = 28896
-# len(labels_train) = 67424
-# len(labels_test) = 28896
 
 # implementing my classifier
 clf = RFC(n_estimators=25, random_state=0).fit(features_train, labels_train)
