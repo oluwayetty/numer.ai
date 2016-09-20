@@ -4,8 +4,8 @@ from sklearn import cross_validation
 from sklearn.ensemble import RandomForestClassifier as RFC
 from sklearn.metrics import accuracy_score, log_loss
 
-training_data = pd.read_csv('numerai_training_data.csv')
-tournament_data = pd.read_csv('numerai_tournament_data.csv')
+training_data = pd.read_csv('../datasets/numerai_training_data.csv')
+tournament_data = pd.read_csv('../datasets/numerai_tournament_data.csv')
 
 # splitting my arrays in ratio of 30:70 percent
 features_train, features_test, labels_train, labels_test = cross_validation.train_test_split(training_data.iloc[:,0:21], training_data['target'], test_size=0.3, random_state=0)
@@ -22,7 +22,7 @@ print y
 # print len(pred)
 
 np.savetxt(
-    'numerai.csv',          # file name
+    '../numerai.csv',          # file name
     y,                      # array to savela
     fmt='%f',               # formatting, 2 digits in this case
     delimiter=',',          # column delimiter
