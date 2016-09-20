@@ -12,19 +12,18 @@ features_train, features_test, labels_train, labels_test = cross_validation.trai
 
 # implementing my classifier
 clf = RFC(n_estimators=25, random_state=0).fit(features_train, labels_train)
-acc_pred = clf.predict(features_test)
-# print acc_pred
-pred = clf.predict_proba(features_test)
-#probability of being in a class 1
-y = np.array([x[1] for x in pred[:]]) # List comprehension
+predictions = clf.predict(features_test)
 
-print y
-# print len(pred)
+# predict class probabilities
+prob_predictions = clf.predict_proba(features_test)
+
+#probability of being in a class 1
+probability_class_of_one = np.array([x[1] for x in prob_predictions[:]]) # List comprehension
 
 np.savetxt(
     '../numerai.csv',          # file name
-    y,                      # array to savela
-    fmt='%f',               # formatting, 2 digits in this case
+    probability_class_of_one,  # array to savela
+    fmt='%.2f',               # formatting, 2 digits in this case
     delimiter=',',          # column delimiter
     newline='\n',           # new line character
     footer='end of file',   # file footer
@@ -32,9 +31,9 @@ np.savetxt(
     header='probability')   # file header
 
 #Accuracy Score
-acc = accuracy_score(labels_test, acc_pred, normalize=True,sample_weight=None)
-print acc
+accuracy = accuracy_score(labels_test, predictions, normalize=True,sample_weight=None)
+print accuracy
 
-logloss = log_loss(labels_test,pred)
+logloss = log_loss(labels_test,prob_predictions)
 print logloss
 #write the predictions to a csv file with headers; `t_id, probability`
