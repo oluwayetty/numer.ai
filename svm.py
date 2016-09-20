@@ -11,7 +11,6 @@ features_train, features_test, labels_train, labels_test = cross_validation.trai
 
 clf = svc(C=100.0).fit(features_train, labels_train)
 
-
 #predicting our target value with the 30% remnant of the training_data
 predictions = clf.predict(features_test)
 print predictions
