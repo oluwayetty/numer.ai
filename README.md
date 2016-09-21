@@ -8,4 +8,4 @@
 
 ```numerai.csv is the predictions made from the datasets in a CSV format with two columns: t_id and probability. The probability column is the probability estimated by the model of the observation being of class 1.```
 
-I built a model for the datasets using two different classifiers from scikit-learn. Read the blog post [here](http://techinpink.com/.)
+I built a model for the datasets using two different classifiers from scikit-learn. Read the blog post [here](http://techinpink.com/2016/09/21/numerai-artificial-intelligence-tournament/.)
