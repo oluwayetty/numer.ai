@@ -19,8 +19,8 @@ prob_predictions_test = clf.predict_proba(features_test)
 
 logloss = log_loss(labels_test,prob_predictions_test)
 accuracy = accuracy_score(labels_test, prob_predictions_class_test, normalize=True,sample_weight=None)
-
-print logloss
+print 'accuracy', accuracy
+print 'logloss', logloss
 
 # predict class probabilities for the tourney set
 prob_predictions_tourney = clf.predict_proba(tournament_data.iloc[:,1:22])
